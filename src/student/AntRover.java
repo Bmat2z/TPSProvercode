@@ -30,7 +30,7 @@ public class AntRover extends AbstractAntRover
 		 List<Map> north = null;
 		 
 		 
-//		 /////////////  CHOOSING DIRECTION WITH NO TIES  //////////
+//		 /////////////  CHOOSING DIRECTION WITH NO TIES  ////////
 //		 
 //		 if((pheromones.get(Action.NORTH) < pheromones.get(Action.EAST))&&
 //				 (pheromones.get(Action.NORTH) < pheromones.get(Action.WEST)&&
