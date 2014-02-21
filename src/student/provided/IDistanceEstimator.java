@@ -26,5 +26,5 @@ public interface IDistanceEstimator<PointType> {
 	 *            Another point.
 	 * @return The distance between the two points.
 	 */
-	public float estimateDistance(PointType a, PointType b);
+	public double estimateDistance(PointType a, PointType b);
 }
