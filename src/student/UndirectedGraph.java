@@ -16,11 +16,11 @@ import student.provided.IDistanceEstimator;
 public class UndirectedGraph extends AUndirectedGraph<NodeType> 
 {
 	
-	public class AStarPoints
-	{
-		private AStarPoints (NodeType node , Double score);
-		
-	}
+//	public class AStarPoints
+//	{
+//		private AStarPoints (NodeType node , Double score);
+//		
+//	}
 	
 	public class nodeComparator implements Comparator<HashMap<NodeType , Double>>
 	{
@@ -91,7 +91,7 @@ public class UndirectedGraph extends AUndirectedGraph<NodeType>
 			// to that of the arbitrarily chosen current.  switch currentNode with the node being evaluated if (nodeEvauating < currentNode).  do this for
 			// the entire openSet and once you have the smallest value, proceed to leave that set as currentNode and proceed with the rest of the search.  
 			
-			while(openSet.size() != 0)
+			while(frontier.size() != 0)
 			{
 				//gScore += super.getEdgeWeight(start, currentNode);
 				
@@ -101,7 +101,7 @@ public class UndirectedGraph extends AUndirectedGraph<NodeType>
 				
 				visitedNodes.putAll(current);
 				
-				if(current.equals(end))
+				if(current.keySet().toArray()[0].equals(end))
 				{
 					goal = 1;
 					
@@ -120,10 +120,60 @@ public class UndirectedGraph extends AUndirectedGraph<NodeType>
 						nodeSets.put(entry, fScore);
 					}
 					
+					openSet.clear();
+					
 					for(Map.Entry<NodeType , Double> entry : nodeSets.entrySet())
 					{
-						frontier.add((HashMap<NodeType, Double>) entry);
+						/* make a for each so that each entry is checked in the priority queue for being there, and it it is there 
+						 * check the value for the smaller of the two.  if the new is smaller that the old, swap, if not, throw away the new one.
+						 */
+						
+						if(!frontier.contains(entry.getKey()) && !visitedNodes.containsKey(entry.getKey()))
+						{
+							frontier.add((HashMap<NodeType, Double>) entry);
+						} else 
+						{
+							Map<NodeType , Double> nodeHolder = new HashMap<NodeType , Double>(); 
+							
+							for(int x = 0; x <= frontier.size(); x++)
+							{
+								nodeHolder.putAll(frontier.poll());
+							}
+							
+							frontier.clear();
+							
+							for(Map.Entry<NodeType, Double> entry2 : nodeHolder.entrySet())
+							{
+								if(entry2.getKey().equals(entry.getKey()))
+								{
+									//check the associated values.
+									
+									if(entry2.getValue() < entry.getValue())
+									{
+										entry = entry2;
+										
+										frontier.add((HashMap<NodeType, Double>) entry);
+										
+										entry2 = null;
+									} 
+								}
+								
+								frontier.add((HashMap<NodeType, Double>) entry2);
+							}
+							
+							
+							
+							
+							
+							
+							
+						}
+						
+						
+						
 					}
+					
+					
 
 					
 				}
