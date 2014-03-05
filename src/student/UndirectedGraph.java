@@ -231,8 +231,7 @@ public class UndirectedGraph extends AUndirectedGraph<NodeType>
 			{
 				// rebuild the path starting at the end moving through all of the children to their parents until you have the start node as the parent.  
 				
-				for(Map.Entry<NodeType, NodeType> child_Parent : childParent.entrySet())
-				{
+				
 					/* ok, so starting at entry <goal , goals parent> put the Parent into the list to be returned by the method.  then once 
 					 * that node has gone in, search the remaining map entries for one whos key (the child) is the same as the parent that was just added
 					 * to the list. then repeat the process until the parent is the start node.  when that happens, you terminate the loop, the path is found.  
@@ -240,7 +239,23 @@ public class UndirectedGraph extends AUndirectedGraph<NodeType>
 					 * just a note, use a  do{operations} while (parent != start).  or something to that effect.    
 					 *   
 					 */
-				}
+				
+				NodeType parent = end;
+				
+				cameFrom.add(end);
+				
+				do
+				{
+					cameFrom.add(childParent.get(parent));
+					
+					parent = childParent.get(parent);
+					
+				} while(parent != start);
+				
+				cameFrom.add(start);
+				
+				return cameFrom;
+				
 				
 			}
 		
