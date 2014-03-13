@@ -10,17 +10,14 @@ import java.util.PriorityQueue;
 import java.util.Set;
 
 import student.provided.AUndirectedGraph;
+import student.provided.CartesianPoint;
 import student.provided.IDistanceEstimator;
+import student.provided.IUndirectedGraph;
 
+ 
 
-public class UndirectedGraph extends AUndirectedGraph<NodeType> 
+public class UndirectedGraph extends AUndirectedGraph
 {
-	
-//	public class AStarPoints
-//	{
-//		private AStarPoints (NodeType node , Double score);
-//		
-//	}
 	
 	public class nodeComparator implements Comparator<HashMap<NodeType , Double>>
 	{
@@ -43,7 +40,6 @@ public class UndirectedGraph extends AUndirectedGraph<NodeType>
 		}
 	}
 
-	@Override
 	public List<NodeType> aStar(NodeType start, NodeType end,
 			IDistanceEstimator<NodeType> distanceEstimator) 
 		{
@@ -262,6 +258,68 @@ public class UndirectedGraph extends AUndirectedGraph<NodeType>
 			return null;
 		
 		}
+
+	
+	public void addNode(CartesianPoint node) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	public boolean hasNode(CartesianPoint node) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
+	public void removeNode(CartesianPoint node) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	public void addEdge(CartesianPoint a, CartesianPoint b, float weight) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	public boolean hasEdge(CartesianPoint a, CartesianPoint b) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
+	public void removeEdge(CartesianPoint a, CartesianPoint b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	public float getEdgeWeight(CartesianPoint a, CartesianPoint b) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
+	public Set<CartesianPoint> getNeighbors(CartesianPoint node) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	public List<CartesianPoint> aStar(CartesianPoint start, CartesianPoint end,
+			IDistanceEstimator<CartesianPoint> distanceEstimator) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List aStar(Object start, Object end,
+			IDistanceEstimator distanceEstimator) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
 
